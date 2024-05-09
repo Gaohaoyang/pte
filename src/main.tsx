@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const lazyWrap = (factory: () => Promise<any>) => {
@@ -24,12 +24,16 @@ const router = createBrowserRouter(
     },
     {
       path: '/Wfd',
+      element: <Navigate to="/Wfd/1" replace />,
+    },
+    {
+      path: '/Wfd/:id',
       // element: <Demo />,
       lazy: lazyWrap(() => import('@/pages/Wfd')),
     },
   ],
   // {
-  //   basename: '/mkt',
+  //   basename: '',
   // },
 )
 
