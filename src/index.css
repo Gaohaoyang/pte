@@ -2,7 +2,7 @@
 
 html,
 body {
-  /* font-family: "Jost", sans-serif; */
+  font-family: sans-serif;
   font-optical-sizing: auto;
   /* font-weight: 400; */
   font-weight: normal;
@@ -14,18 +14,15 @@ body {
   flex-direction: column;
   align-items: center;
   white-space: pre-line;
-  -webkit-touch-callout: none;
-  /* iOS Safari */
+  /* -webkit-touch-callout: none;
   -webkit-user-select: none;
-  /* Safari */
   -khtml-user-select: none;
-  /* Konqueror HTML */
   -moz-user-select: none;
-  /* Old versions of Firefox */
   -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+  user-select: none; */
   -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  cursor: pointer;
 }

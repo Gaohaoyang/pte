@@ -19,7 +19,10 @@ const initialState: State = {
 
 export const useWfdControl = create<State & Actions>((set, get) => ({
   ...initialState,
-  setCurrentIndex: (index) => set({ currentIndex: index }),
+  setCurrentIndex: (index) => {
+    console.log('setCurrentIndex', index)
+    set({ currentIndex: index })
+  },
   setTotal: (total) => set({ total }),
   next: () => {
     const { currentIndex, total } = get()
