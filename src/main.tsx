@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './index.css'
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const lazyWrap = (factory: () => Promise<any>) => {
@@ -16,7 +16,7 @@ const lazyWrap = (factory: () => Promise<any>) => {
   }
 }
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       path: '/',
