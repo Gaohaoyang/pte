@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import { wfdData } from '@/constants/wfdData'
-import { useWfdControl } from '@/pages/Wfd/store/useWfdControl'
-import { useShallow } from 'zustand/react/shallow'
+// import { useWfdControl } from '@/pages/Wfd/store/useWfdControl'
+// import { useShallow } from 'zustand/react/shallow'
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import speak from '@/utils/speak'
@@ -16,28 +16,31 @@ const Wfd = () => {
   const [inputText, setInputText] = useState('')
   const inputTextRef = useRef('')
 
-  const { currentIndex, setCurrentIndex, setTotal, total, reset } = useWfdControl(
-    useShallow((state) => state),
-  )
+  // const {
+  //   // currentIndex,
+  //   // setCurrentIndex,
+  //   // setTotal,
+  //   // reset,
+  // } = useWfdControl(useShallow((state) => state))
 
   useEffect(() => {
-    reset()
+    // reset()
     setCompareResult(undefined)
     setInputText('')
     inputTextRef.current = ''
 
     const index = Number(id) - 1
-    setCurrentIndex(index)
+    // setCurrentIndex(index)
     const timer = setTimeout(() => {
       speak(wfdData[index].sentence)
-    }, 1000)
+    }, 800)
     return () => {
       clearTimeout(timer)
     }
   }, [id])
 
   useEffect(() => {
-    setTotal(wfdData.length)
+    // setTotal(wfdData.length)
     getVoices()
   }, [])
 
@@ -56,12 +59,12 @@ const Wfd = () => {
 
   const handleSubmit = () => {
     console.log('inputTextRef.current', inputTextRef.current)
-    setCompareResult(compareWfd(wfdData[currentIndex].sentence, inputTextRef.current))
+    setCompareResult(compareWfd(wfdData[Number(id) - 1].sentence, inputTextRef.current))
   }
 
   return (
     <div className={styles.container}>
-      <div>Num {currentIndex + 1}</div>
+      <div>Num {id}</div>
       {/* <div>{wfdData[currentIndex].sentence}</div> */}
       <textarea
         name=""
