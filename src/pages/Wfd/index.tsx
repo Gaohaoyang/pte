@@ -78,7 +78,7 @@ const Wfd = () => {
               marginRight: '10px',
             }}
             onClick={() => {
-              if (currentIndex === 0) {
+              if (Number(id) === 1) {
                 navigate(`/Wfd/${wfdData.length}`)
               } else {
                 navigate(`/Wfd/${Number(id) - 1}`)
@@ -89,7 +89,7 @@ const Wfd = () => {
           </button>
           <button
             onClick={() => {
-              if (currentIndex + 1 >= total) {
+              if (Number(id) >= wfdData.length) {
                 navigate(`/Wfd/1`)
               } else {
                 navigate(`/Wfd/${Number(id) + 1}`)
