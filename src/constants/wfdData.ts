@@ -9,6 +9,9 @@ export const wfdData = [
     sentence: 'Before preparing any food, be sure to wash your hands well.',
   },
   {
+    sentence: 'I want to make an appointment with the manager.',
+  },
+  {
     sentence: 'In my opinion, this car should be repaired soon.',
   },
   {
