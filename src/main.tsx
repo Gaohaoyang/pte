@@ -16,25 +16,23 @@ const lazyWrap = (factory: () => Promise<any>) => {
   }
 }
 
-const router = createHashRouter(
-  [
-    {
-      path: '/',
-      element: <div>Hello world!</div>,
-    },
-    {
-      path: '/Wfd',
-      element: <Navigate to="/Wfd/1" replace />,
-    },
-    {
-      path: '/Wfd/:id',
-      // element: <Demo />,
-      lazy: lazyWrap(() => import('@/pages/Wfd')),
-    },
-  ],
-  // {
-  //   basename: '',
-  // },
-)
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <div>Hello world!</div>,
+  },
+  {
+    path: '/Wfd',
+    element: <Navigate to="/Wfd/1" replace />,
+  },
+  {
+    path: '/Wfd/:id',
+    lazy: lazyWrap(() => import('@/pages/Wfd')),
+  },
+  {
+    path: '/about',
+    lazy: lazyWrap(() => import('@/pages/About')),
+  },
+])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
