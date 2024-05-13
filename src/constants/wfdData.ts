@@ -8,4 +8,7 @@ export const wfdData = [
   {
     sentence: 'In my opinion, this car should be repaired soon.',
   },
+  {
+    sentence: 'Rail transport is becoming more and more popular.',
+  },
 ]

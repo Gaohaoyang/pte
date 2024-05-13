@@ -2,21 +2,30 @@ import styles from './index.module.css'
 import { wfdData } from '@/constants/wfdData'
 import { useWfdControl } from '@/pages/Wfd/store/useWfdControl'
 import { useShallow } from 'zustand/react/shallow'
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import speak from '@/utils/speak'
+import { compareWfd, CompareResult } from '@/utils/compareWfd'
 // import { getAllSpecificLanguageVoices } from '@/utils/speak'
 // import { useVoiceControlPersist } from '@/store/useVoiceControlPersist'
 
 const Wfd = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const [compareResult, setCompareResult] = useState<CompareResult>()
+  const [inputText, setInputText] = useState('')
+  const inputTextRef = useRef('')
 
-  const { currentIndex, setCurrentIndex, setTotal, total } = useWfdControl(
+  const { currentIndex, setCurrentIndex, setTotal, total, reset } = useWfdControl(
     useShallow((state) => state),
   )
 
   useEffect(() => {
+    reset()
+    setCompareResult(undefined)
+    setInputText('')
+    inputTextRef.current = ''
+
     const index = Number(id) - 1
     setCurrentIndex(index)
     const timer = setTimeout(() => {
@@ -40,15 +49,34 @@ const Wfd = () => {
     // }
   }
 
+  useEffect(() => {
+    console.log(inputText)
+    inputTextRef.current = inputText
+  }, [inputText])
+
+  const handleSubmit = () => {
+    console.log('inputTextRef.current', inputTextRef.current)
+    setCompareResult(compareWfd(wfdData[currentIndex].sentence, inputTextRef.current))
+  }
+
   return (
     <div className={styles.container}>
       <div>Num {currentIndex + 1}</div>
-      <div>{wfdData[currentIndex].sentence}</div>
-      <textarea name="" id="" className={styles.textarea}></textarea>
+      {/* <div>{wfdData[currentIndex].sentence}</div> */}
+      <textarea
+        name=""
+        id=""
+        className={styles.textarea}
+        onChange={(e) => setInputText(e.target.value)}
+        value={inputText}
+      ></textarea>
       <div className={styles.row}>
-        <button>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
         <div>
           <button
+            style={{
+              marginRight: '10px',
+            }}
             onClick={() => {
               if (currentIndex === 0) {
                 navigate(`/Wfd/${wfdData.length}`)
@@ -73,15 +101,37 @@ const Wfd = () => {
         </div>
       </div>
 
-      <div>Answer</div>
-      <div>
-        <div>Your Answer:</div>
-        <div>sentence</div>
-      </div>
-      <div>
-        <div>Correct Answer:</div>
-        <div>sentence</div>
-      </div>
+      {compareResult && (
+        <>
+          <div className={styles.compareResult}>
+            <div className={styles.answerRow}>
+              <div className={styles.col1}>Answer: </div>
+              <div>{compareResult?.answer}</div>
+            </div>
+            <div className={styles.answerRow}>
+              <div className={styles.col1}>Input: </div>
+              <div className={styles.inputComparedRow}>
+                {compareResult?.inputCompared.map((item, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      color: item.correct ? 'green' : '#333',
+                    }}
+                  >
+                    {item.word}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className={styles.answerRow}>
+            <div className={styles.col1}>Overall:</div>
+            <div className={styles.inputCompareRow}>
+              {compareResult?.correct}/{compareResult?.total}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

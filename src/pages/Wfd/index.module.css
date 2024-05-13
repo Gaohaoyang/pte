@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
 @media screen and (max-width: 800px) {
@@ -13,17 +14,37 @@
 
 @media screen and (max-width: 600px) {
   .container {
-      width: 100vw;
-      padding: 12px;
-    }
+    width: 100vw;
+    padding: 12px;
+  }
 }
 
 .textarea {
   width: 100%;
   height: 100px;
   box-sizing: border-box;
+  padding: 8px;
 }
+
 .row {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+}
+
+.compareResult {
+  margin-top: 20px;
+}
+
+.answerRow {
+  display: flex;
+  margin-top: 10px;
+}
+
+.col1 {
+  width: 80px;
+}
+
+.inputComparedRow {
+  /* display: flex; */
 }
