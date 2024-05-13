@@ -12,7 +12,6 @@ export default defineConfig({
     }),
   ],
   build: {
-    outDir: 'build',
     rollupOptions: {
       output: {
         // https://rollupjs.org/configuration-options/#output-manualchunks
