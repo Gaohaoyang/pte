@@ -93,7 +93,7 @@ const About = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
