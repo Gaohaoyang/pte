@@ -22,18 +22,20 @@ const router = createHashRouter([
     path: '/',
     lazy: lazyWrap(() => import('@/pages/Layout')),
     errorElement: Error(),
-  },
-  {
-    path: '/Wfd',
-    element: <Navigate to="/Wfd/1" replace />,
-  },
-  {
-    path: '/Wfd/:id',
-    lazy: lazyWrap(() => import('@/pages/Wfd')),
-  },
-  {
-    path: '/about',
-    lazy: lazyWrap(() => import('@/pages/About')),
+    children: [
+      {
+        path: 'wfd',
+        element: <Navigate to="/wfd/1" replace />,
+      },
+      {
+        path: '/wfd/:id',
+        lazy: lazyWrap(() => import('@/pages/Wfd')),
+      },
+      {
+        path: '/about',
+        lazy: lazyWrap(() => import('@/pages/About')),
+      },
+    ],
   },
 ])
 

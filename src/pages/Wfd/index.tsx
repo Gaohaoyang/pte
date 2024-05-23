@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 import { wfdData } from '@/constants/wfdData'
-// import { useWfdControl } from '@/pages/Wfd/store/useWfdControl'
+// import { useWfdControl } from '@/pages/wfd/store/useWfdControl'
 // import { useShallow } from 'zustand/react/shallow'
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -82,9 +82,9 @@ const Wfd = () => {
             }}
             onClick={() => {
               if (Number(id) === 1) {
-                navigate(`/Wfd/${wfdData.length}`)
+                navigate(`/wfd/${wfdData.length}`)
               } else {
-                navigate(`/Wfd/${Number(id) - 1}`)
+                navigate(`/wfd/${Number(id) - 1}`)
               }
             }}
           >
@@ -93,9 +93,9 @@ const Wfd = () => {
           <button
             onClick={() => {
               if (Number(id) >= wfdData.length) {
-                navigate(`/Wfd/1`)
+                navigate(`/wfd/1`)
               } else {
-                navigate(`/Wfd/${Number(id) + 1}`)
+                navigate(`/wfd/${Number(id) + 1}`)
               }
             }}
           >

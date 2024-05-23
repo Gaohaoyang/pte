@@ -5,7 +5,22 @@
 }
 
 .container {
+  width: 800px;
+  margin: 0 auto;
+  padding: var(--header-height) 0px;
   box-sizing: border-box;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100vw;
+    padding: var(--header-height) 12px;
+  }
 }

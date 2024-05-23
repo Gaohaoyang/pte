@@ -4,6 +4,42 @@
   left: 0;
   z-index: 10;
   width: 100vw;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0.6);
+  height: var(--header-height);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #fff; */
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100vw;
+    padding: 12px;
+  }
+}
+
+.area {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 30px;
+  margin-right: 8px;
 }

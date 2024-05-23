@@ -1,6 +1,6 @@
 .wrap {
   width: 100vw;
-  height: 50px;
+  height: var(--footer-height);
   background-color: #eee;
   position: absolute;
   bottom: 0;
