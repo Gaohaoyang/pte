@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './index.css'
 import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom'
+import Error from '@/pages/Error'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const lazyWrap = (factory: () => Promise<any>) => {
@@ -16,25 +17,26 @@ const lazyWrap = (factory: () => Promise<any>) => {
   }
 }
 
-const router = createHashRouter(
-  [
-    {
-      path: '/',
-      element: <div>Hello world!</div>,
-    },
-    {
-      path: '/Wfd',
-      element: <Navigate to="/Wfd/1" replace />,
-    },
-    {
-      path: '/Wfd/:id',
-      // element: <Demo />,
-      lazy: lazyWrap(() => import('@/pages/Wfd')),
-    },
-  ],
-  // {
-  //   basename: '',
-  // },
-)
+const router = createHashRouter([
+  {
+    path: '/',
+    lazy: lazyWrap(() => import('@/pages/Layout')),
+    errorElement: Error(),
+  },
+  {
+    path: '/Wfd',
+    element: <Navigate to="/Wfd/1" replace />,
+  },
+  {
+    path: '/Wfd/:id',
+    lazy: lazyWrap(() => import('@/pages/Wfd')),
+  },
+  {
+    path: '/about',
+    lazy: lazyWrap(() => import('@/pages/About')),
+  },
+])
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router} />,
+)
