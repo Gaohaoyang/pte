@@ -97,3 +97,5 @@ const About = () => {
 }
 
 export default About
+
+export const Component = About

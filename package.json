@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@remixicon/react": "^4.2.0",
-    "axios": "^1.6.8",
     "framer-motion": "^11.1.7",
     "i18next": "^23.11.3",
     "normalize.css": "^8.0.1",

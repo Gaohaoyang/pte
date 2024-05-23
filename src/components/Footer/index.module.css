@@ -1,0 +1,8 @@
+.wrap {
+  width: 100vw;
+  height: 50px;
+  background-color: #eee;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

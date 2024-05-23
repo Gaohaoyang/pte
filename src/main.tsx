@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './index.css'
 import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom'
+import Error from '@/pages/Error'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const lazyWrap = (factory: () => Promise<any>) => {
@@ -19,7 +20,8 @@ const lazyWrap = (factory: () => Promise<any>) => {
 const router = createHashRouter([
   {
     path: '/',
-    element: <div>Hello world!</div>,
+    lazy: lazyWrap(() => import('@/pages/Layout')),
+    errorElement: Error(),
   },
   {
     path: '/Wfd',
@@ -35,4 +37,6 @@ const router = createHashRouter([
   },
 ])
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <RouterProvider router={router} />,
+)
