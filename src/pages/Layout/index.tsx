@@ -5,30 +5,64 @@ const Layout = () => {
   return (
     <div className={styles.wrap}>
       <Header />
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
-      <div style={{
-        height: '20vh'
-      }}>hello</div>
+      <div className={styles.container}>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+        <div
+          style={{
+            height: '20vh',
+          }}
+        >
+          hello
+        </div>
+      </div>
       <Footer />
     </div>
   )
